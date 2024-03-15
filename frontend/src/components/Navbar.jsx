@@ -17,6 +17,7 @@ const Navbar = () => {
   };
   return (
     <div>
+      <Link to={"/"}>Home</Link>
       {currentUser ? (
         <div className="navbar-nav ml-auto">
           <li className="nav-item">

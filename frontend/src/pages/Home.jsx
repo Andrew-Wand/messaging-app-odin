@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
+import UserList from "../components/UserList";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [content, setContent] = useState("");
@@ -21,12 +23,50 @@ const Home = () => {
     );
   }, []);
 
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
   return (
     <div className="container">
-      <header className="jumbotron">
+      {/* <header className="jumbotron">
         <h3>{content}</h3>
-        <p>hello</p>
-      </header>
+      </header> */}
+
+      <div>
+        {currentUser ? (
+          // HOME PAGE if user is logged in
+          <div>
+            <h1>Welcome back {currentUser.username}!</h1>
+            <UserList />
+          </div>
+        ) : (
+          // HOME PAGE if user is logged out
+          <div>
+            <h1>Welcome!</h1>
+            <div>
+              <ul>
+                <li className="nav-item">
+                  <Link to={"/sign-in"} className="nav-link">
+                    Login
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to={"/register"} className="nav-link">
+                    Sign Up
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
