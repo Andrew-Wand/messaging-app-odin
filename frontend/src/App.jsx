@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import Navbar from "./components/Navbar";
+import Message from "./pages/Message";
 
 function App() {
   // const [items, setItems] = useState([]);
@@ -35,15 +36,19 @@ function App() {
   //   });
   // }
 
+  const [messageId, setMessageId] = useState("");
+  const messageURL = "/message/" + messageId;
+
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home setMessageId={setMessageId} />} />
+        <Route path="/home" element={<Home setMessageId={setMessageId} />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path={messageURL} element={<Message />} />
       </Routes>
     </div>
   );

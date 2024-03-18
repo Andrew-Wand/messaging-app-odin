@@ -3,10 +3,11 @@ import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
 import { Link } from "react-router-dom";
 
-const UserList = () => {
+const UserList = ({ setMessageId }) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [allUserList, setAllUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
+  const [btnvisible, setBtnVisible] = useState(false);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -33,9 +34,13 @@ const UserList = () => {
 
   const onChangeSelect = (e) => {
     const selection = e.target.value;
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setSelectedUser(selection);
+    setBtnVisible(true);
+    setMessageId(selection);
   };
+
+  const messageURL = "/message/" + selectedUser;
 
   // console.log(filteredUserList);
   return (
@@ -51,6 +56,8 @@ const UserList = () => {
               </option>
             ))}
           </select>
+
+          {btnvisible ? <Link to={messageURL}>Send message</Link> : ""}
           {/* <ul>
             {filteredUserList.map((user, i) => (
               <li key={i}>{user.username}</li>

@@ -4,7 +4,7 @@ import UserService from "../services/user.service";
 import UserList from "../components/UserList";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ setMessageId }) => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Home = () => {
           // HOME PAGE if user is logged in
           <div>
             <h1>Welcome back {currentUser.username}!</h1>
-            <UserList />
+            <UserList setMessageId={setMessageId} />
           </div>
         ) : (
           // HOME PAGE if user is logged out

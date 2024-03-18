@@ -28,12 +28,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const db = require("./models");
 const Role = db.role;
+const Message = db.message;
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 //   initial();
 // });
 db.sequelize.sync().then(() => {
   // initial();
+  // initalMessages();
 });
 
 const PORT = 8081 || 8080;
@@ -57,6 +59,14 @@ function initial() {
     name: "admin",
   });
 }
+
+// function initalMessages() {
+//   Message.create({
+//     text: "Hello, this is a message.",
+//     owner: "sample text",
+//     receiver: "sample text",
+//   });
+// }
 // app.use("/", indexRouter);
 // app.use("/users", usersRouter);
 
@@ -77,5 +87,6 @@ function initial() {
 
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
+require("./routes/message.routes")(app);
 
 module.exports = app;
