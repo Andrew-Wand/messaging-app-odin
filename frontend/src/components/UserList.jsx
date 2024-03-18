@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const UserList = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [allUserList, setAllUserList] = useState([]);
+  const [selectedUser, setSelectedUser] = useState("");
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -16,8 +17,12 @@ const UserList = () => {
 
   useEffect(() => {
     const fetchUserList = async () => {
-      const userList = await UserService.getUserList();
-      setAllUserList(userList.data);
+      try {
+        const userList = await UserService.getUserList();
+        setAllUserList(userList.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchUserList();
   }, []);
@@ -26,17 +31,31 @@ const UserList = () => {
     (user) => user.email !== currentUser.email
   );
 
-  console.log(filteredUserList);
+  const onChangeSelect = (e) => {
+    const selection = e.target.value;
+    console.log(e.target.value);
+    setSelectedUser(selection);
+  };
+
+  // console.log(filteredUserList);
   return (
     <div>
       {currentUser ? (
         <div>
           <p>Friends list</p>
-          <ul>
+
+          <select size={4} name="" id="" onChange={onChangeSelect}>
+            {filteredUserList.map((user) => (
+              <option value={user.id} key={user.id}>
+                {user.username}
+              </option>
+            ))}
+          </select>
+          {/* <ul>
             {filteredUserList.map((user, i) => (
               <li key={i}>{user.username}</li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       ) : (
         ""
