@@ -79,7 +79,6 @@ const Register = () => {
     setPassword(password);
   };
 
-  console.log(password);
   const handleRegister = (e) => {
     e.preventDefault();
 

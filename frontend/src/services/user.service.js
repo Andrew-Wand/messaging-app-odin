@@ -19,11 +19,24 @@ const getUserList = () => {
   return axios.get(API_URL + "allUserList");
 };
 
+const getMessageList = () => {
+  return axios.get(API_URL + "allMessageList");
+};
+const postSendMessage = (text, owner, receiver) => {
+  return axios.post(API_URL + "sendmessage", {
+    text,
+    owner,
+    receiver,
+  });
+};
+
 const UserService = {
   getPublicContent,
   getUserBoard,
   getAdminBoard,
   getUserList,
+  getMessageList,
+  postSendMessage,
 };
 
 export default UserService;

@@ -14,3 +14,14 @@ exports.sendMessage = async (req, res) => {
 
   return res.send(message);
 };
+
+exports.messageList = async (req, res) => {
+  try {
+    const response = await Message.findAll();
+    res.status(200).send(response);
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

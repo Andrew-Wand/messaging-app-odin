@@ -16,4 +16,6 @@ module.exports = function (app) {
 
     controller.sendMessage
   );
+
+  app.get("/api/test/allMessageList", controller.messageList);
 };
