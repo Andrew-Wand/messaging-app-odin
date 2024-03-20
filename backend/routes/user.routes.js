@@ -29,4 +29,5 @@ module.exports = function (app) {
   );
 
   app.get("/api/test/allUserList", controller.userList);
+  app.put("/api/test/updateProfile/:id", controller.updateProfile);
 };

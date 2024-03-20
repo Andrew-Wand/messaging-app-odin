@@ -42,7 +42,7 @@ const Home = ({ setMessageId }) => {
         {currentUser ? (
           // HOME PAGE if user is logged in
           <div>
-            <h1>Welcome back {currentUser.username}!</h1>
+            <h1 className="text-3xl">Welcome back {currentUser.username}!</h1>
             <UserList setMessageId={setMessageId} />
           </div>
         ) : (

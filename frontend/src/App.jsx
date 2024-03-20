@@ -47,7 +47,7 @@ function App() {
         <Route path="/home" element={<Home setMessageId={setMessageId} />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile />} />
         <Route path={messageURL} element={<Message />} />
       </Routes>
     </div>

@@ -1,5 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth-header";
+import AuthService from "./auth.service";
+
+const currentUser = AuthService.getCurrentUser();
+const id = currentUser ? currentUser.id : "";
 
 const API_URL = "http://localhost:8081/api/test/";
 
@@ -29,6 +33,11 @@ const postSendMessage = (text, owner, receiver) => {
     receiver,
   });
 };
+const editProfile = (email) => {
+  return axios.put(API_URL + `updateProfile/${id}`, {
+    email,
+  });
+};
 
 const UserService = {
   getPublicContent,
@@ -37,6 +46,7 @@ const UserService = {
   getUserList,
   getMessageList,
   postSendMessage,
+  editProfile,
 };
 
 export default UserService;

@@ -49,10 +49,9 @@ const UserList = ({ setMessageId }) => {
       currentUser.id === message.receiver ||
       currentUser.id === message.owner
   );
-  console.log(filteredMessageList);
 
   const filteredUserList = allUserList.filter(
-    (user) => user.email !== currentUser.email
+    (user) => user.username !== currentUser.username
   );
 
   const onChangeSelect = (e) => {
