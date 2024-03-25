@@ -79,22 +79,33 @@ const UserList = ({ setMessageId }) => {
                 </option>
               ))}
             </select>
-
-            {btnvisible ? <Link to={messageURL}>Send message</Link> : ""}
           </div>
-          <div>
+          {/* Chat Area */}
+          <div className=" w-[22rem] xl:artboard artboard-horizontal phone-1 bg-black rounded-xl ml-8 ">
             <ul>
               {filteredMessageList.map((message, i) => (
-                <li
-                  key={i}
-                  style={
-                    message.receiver !== selectedUser
-                      ? { fontWeight: "bold" }
-                      : { fontWeight: "normal" }
-                  }
-                >
-                  {message.text}
-                </li>
+                <div key={i}>
+                  {message.receiver !== selectedUser ? (
+                    <div className="chat chat-start">
+                      <div className="chat-bubble">{message.text}</div>
+                    </div>
+                  ) : (
+                    <div className="chat chat-end">
+                      <div className="chat-header">{currentUser.username}</div>
+                      <div className="chat-bubble">{message.text}</div>
+                    </div>
+                  )}
+                </div>
+                // <li
+                //   key={i}
+                //   style={
+                //     message.receiver !== selectedUser
+                //       ? { fontWeight: "bold" }
+                //       : { fontWeight: "normal" }
+                //   }
+                // >
+                //   {message.text}
+                // </li>
               ))}
             </ul>
           </div>
@@ -104,6 +115,13 @@ const UserList = ({ setMessageId }) => {
               <li key={i}>{user.username}</li>
             ))}
           </ul> */}
+          {btnvisible ? (
+            <Link className="btn btn-secondary m-6" to={messageURL}>
+              Send message
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
       ) : (
         ""
