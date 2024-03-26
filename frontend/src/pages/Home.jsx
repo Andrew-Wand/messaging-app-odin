@@ -33,7 +33,7 @@ const Home = ({ setMessageId }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container h-screen">
       {/* <header className="jumbotron">
         <h3>{content}</h3>
       </header> */}
@@ -42,7 +42,6 @@ const Home = ({ setMessageId }) => {
         {currentUser ? (
           // HOME PAGE if user is logged in
           <div>
-            <h1 className="text-3xl">Welcome back {currentUser.username}!</h1>
             <UserList setMessageId={setMessageId} />
           </div>
         ) : (
