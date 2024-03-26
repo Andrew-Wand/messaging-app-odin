@@ -57,7 +57,6 @@ const UserList = ({ setMessageId }) => {
 
   const onChangeSelect = (e) => {
     const selection = e.target.value;
-    // console.log(e.target.value);
     setSelectedUser(selection);
     setBtnVisible(true);
     setMessageId(selection);
@@ -66,7 +65,6 @@ const UserList = ({ setMessageId }) => {
 
   const messageURL = "/message/" + selectedUser;
 
-  // console.log(filteredUserList);
   return (
     <div>
       {currentUser ? (
@@ -113,11 +111,11 @@ const UserList = ({ setMessageId }) => {
                   className="drawer-overlay"
                 ></label>
 
-                <div className="bg-slate-500 h-[3rem] w-[20rem] text-center">
+                <div className="bg-slate-500 h-[3rem] w-full text-center">
                   <h3 className="text-2xl mt-1">Friends List</h3>
                 </div>
                 <select
-                  className="xl:block p-4 w-80 min-h-full bg-base-100 text-base-content p-0 mt-10 "
+                  className="xl:block p-4 w-full min-h-full bg-base-100 text-base-content p-0 mt-10 "
                   size={10}
                   name=""
                   id=""
@@ -144,9 +142,11 @@ const UserList = ({ setMessageId }) => {
                 </select>
               </div>
             </div>
-
+          </div>
+          {/* Chat Area / Friends list DESKTOP */}
+          <div className="flex justify-center">
             <select
-              className="hidden xl:block"
+              className="hidden xl:block p-4 xl:w-60 min-h-full bg-base-300 text-base-content p-0 mt-10"
               size={4}
               name=""
               id=""
@@ -158,46 +158,32 @@ const UserList = ({ setMessageId }) => {
                 </option>
               ))}
             </select>
-          </div>
-          {/* Chat Area */}
-          <div className=" w-[26rem] xl:artboard artboard-horizontal phone-1 bg-black rounded-xl ">
-            <ul>
-              {filteredMessageList.map((message, i) => (
-                <div key={i}>
-                  {message.receiver !== selectedUser ? (
-                    <div className="chat chat-start">
-                      <div className="chat-bubble chat-bubble-error static">
-                        {message.text}
+            <div className="w-[25rem] h-[26rem] artboard artboard-horizontal bg-black rounded-xl overflow-auto flex flex-col-reverse">
+              <ul>
+                {filteredMessageList.map((message, i) => (
+                  <div key={i}>
+                    {message.receiver !== selectedUser ? (
+                      <div className="chat chat-start">
+                        <div className="chat-bubble chat-bubble-error static">
+                          {message.text}
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div className="chat chat-end">
-                      <div className="chat-header">{currentUser.username}</div>
-                      <div className="chat-bubble chat-bubble-info static">
-                        {message.text}
+                    ) : (
+                      <div className="chat chat-end">
+                        <div className="chat-header">
+                          {currentUser.username}
+                        </div>
+                        <div className="chat-bubble chat-bubble-info static">
+                          {message.text}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-                // <li
-                //   key={i}
-                //   style={
-                //     message.receiver !== selectedUser
-                //       ? { fontWeight: "bold" }
-                //       : { fontWeight: "normal" }
-                //   }
-                // >
-                //   {message.text}
-                // </li>
-              ))}
-            </ul>
+                    )}
+                  </div>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* <ul>
-            {filteredUserList.map((user, i) => (
-              <li key={i}>{user.username}</li>
-            ))}
-          </ul> */}
           {btnvisible ? (
             <Link className="btn btn-secondary m-6 flex" to={messageURL}>
               Send message

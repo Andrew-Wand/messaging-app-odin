@@ -17,8 +17,9 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 xl:bg-base-300 xl:shadow-lg">
         <div className="navbar-start">
+          {/* MOBILE */}
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -79,32 +80,42 @@ const Navbar = () => {
             Chat Room
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+
+        {/* DESKTOP */}
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {currentUser ? (
+              // User is logged in
+              <>
+                <li className="nav-item">
+                  <Link to={`/profile/${currentUser.id}`} className="nav-link">
+                    {currentUser.username}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="/" className="nav-link" onClick={logOut}>
+                    LogOut
+                  </a>
+                </li>
+              </>
+            ) : (
+              // No user logged in
+              <div className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to={"/sign-in"} className="nav-link">
+                    Login
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to={"/register"} className="nav-link">
+                    Sign Up
+                  </Link>
+                </li>
+              </div>
+            )}
           </ul>
         </div>
-        {/* <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div> */}
       </div>
       {/* <Link to={"/"}>Home</Link> */}
 
