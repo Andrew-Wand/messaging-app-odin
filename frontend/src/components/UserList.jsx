@@ -153,12 +153,16 @@ const UserList = ({ setMessageId }) => {
               onChange={onChangeSelect}
             >
               {filteredUserList.map((user) => (
-                <option value={user.id} key={user.id}>
+                <option
+                  value={user.id}
+                  key={user.id}
+                  className="text-2xl border-solid border-b-[1px] border-slate-500 bg-white text-black h-[5rem]"
+                >
                   {user.username}
                 </option>
               ))}
             </select>
-            <div className="w-[25rem] h-[26rem] artboard artboard-horizontal bg-black rounded-xl overflow-auto flex flex-col-reverse">
+            <div className="w-[25rem] h-[26rem] xl:w-[46rem] xl:h-[25rem] xl:mt-10 artboard artboard-horizontal bg-black rounded-xl overflow-auto flex flex-col-reverse">
               <ul>
                 {filteredMessageList.map((message, i) => (
                   <div key={i}>
