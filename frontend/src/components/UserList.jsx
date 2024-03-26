@@ -144,7 +144,7 @@ const UserList = ({ setMessageId }) => {
             </div>
           </div>
           {/* Chat Area / Friends list DESKTOP */}
-          <div className="flex justify-center">
+          <div className="flex justify-end mr-10">
             <select
               className="hidden xl:block p-4 xl:w-60 min-h-full bg-base-300 text-base-content p-0 mt-10"
               size={4}
@@ -189,9 +189,11 @@ const UserList = ({ setMessageId }) => {
           </div>
 
           {btnvisible ? (
-            <Link className="btn btn-secondary m-6 flex" to={messageURL}>
-              Send message
-            </Link>
+            <div className="xl:flex xl:mr-10 xl:mt-10 xl:justify-end mt-10 ml-5">
+              <Link className="btn btn-secondary" to={messageURL}>
+                Send message
+              </Link>
+            </div>
           ) : (
             ""
           )}

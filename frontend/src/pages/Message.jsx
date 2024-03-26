@@ -57,24 +57,30 @@ const Message = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screen">
       <header>
         {filteredUserList.map((user, i) => (
-          <h1 key={i}>Message {user.username}</h1>
+          <h1 className="text-center text-3xl mb-5" key={i}>
+            Message {user.username}
+          </h1>
         ))}
       </header>
 
       <form onSubmit={handleSendMessage}>
-        <div>
+        <div className="flex justify-center">
           <textarea
             name=""
             id=""
             cols="30"
             rows="10"
             onChange={messageTextOnChange}
+            placeholder="Type message here..."
+            className="textarea textarea-bordered textarea-lg w-full max-w-xs bg-white border-black border-2 text-black"
           ></textarea>
         </div>
-        <button>Send</button>
+        <div className="flex justify-center">
+          <button className=" btn mt-5 btn-secondary">Send</button>
+        </div>
       </form>
     </div>
   );
