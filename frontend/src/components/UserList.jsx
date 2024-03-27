@@ -70,7 +70,7 @@ const UserList = ({ setMessageId }) => {
     <div>
       {currentUser ? (
         <div>
-          {/* MOBILE */}
+          {/* MOBILE friends list */}
           <div>
             <div className="drawer xl:hidden">
               {usersFiltered.map((user, i) => (
@@ -117,22 +117,28 @@ const UserList = ({ setMessageId }) => {
                   className="drawer-overlay"
                 ></label>
 
-                <div className="bg-slate-500 h-[3rem] w-full text-center">
-                  <h3 className="text-2xl mt-1">Friends List</h3>
+                <div className="bg-slate-500 h-[3rem] w-full text-center flex">
+                  <button
+                    onClick={() => setDrawerVisibile(false)}
+                    className="btn btn-sm btn-info mt-1 ml-5"
+                  >
+                    Back
+                  </button>
+                  <h3 className="text-2xl mt-1 ml-20">Friends List</h3>
                 </div>
                 <select
-                  className="xl:block p-4 w-full min-h-full bg-base-100 text-base-content p-0 mt-10 "
+                  className="xl:block w-full min-h-full bg-base-100 text-base-content p-0 mt-10 "
                   size={10}
                   name=""
                   id=""
                   onChange={onChangeSelect}
                 >
-                  {filteredUserList.map((user) => (
+                  {filteredUserList.map((user, i) => (
                     <>
                       <option
                         className="text-2xl border-solid border-b-[1px] border-slate-500 bg-white text-black h-[5rem]"
                         value={user.id}
-                        key={user.id}
+                        key={i}
                       >
                         <div className="avatar placeholder">
                           <div className="bg-neutral text-neutral-content rounded-full w-16 mr-10 mt-2">
@@ -149,7 +155,7 @@ const UserList = ({ setMessageId }) => {
               </div>
             </div>
           </div>
-          {/* Chat Area / Friends list DESKTOP */}
+          {/* Chat Area for DESKTOP AND MOBILE / Friends list DESKTOP */}
           <div className="flex justify-center xl:justify-end xl:mr-10">
             <select
               className="hidden xl:block p-4 xl:w-60 min-h-full bg-base-300 text-base-content p-0 mt-10 xl:rounded-xl xl:shadow-lg"
@@ -158,12 +164,11 @@ const UserList = ({ setMessageId }) => {
               id=""
               onChange={onChangeSelect}
             >
-              {filteredUserList.map((user) => (
+              {filteredUserList.map((user, i) => (
                 <option
                   value={user.id}
-                  key={user.id}
+                  key={i}
                   className="text-2xl border-solid border-b-[1px] border-slate-500 bg-white text-black h-[5rem] "
-                  selected={userId === selectedUser ? "true" : "true"}
                 >
                   <div className="avatar placeholder">
                     <div className="bg-neutral text-neutral-content rounded-full w-16 mr-10 mt-2">
@@ -176,7 +181,7 @@ const UserList = ({ setMessageId }) => {
                 </option>
               ))}
             </select>
-            <div className="w-[25rem] h-[26rem] xl:w-[46rem] xl:h-[27rem] xl:mt-10 artboard artboard-horizontal bg-black overflow-auto flex flex-col-reverse">
+            <div className="w-full h-[26rem] xl:w-[46rem] xl:h-[27rem] xl:mt-10 artboard artboard-horizontal bg-slate-800/10 shadow-lg overflow-auto flex flex-col-reverse">
               {/* Messages in chat room box */}
               <ul>
                 {filteredMessageList.map((message, i) => (
@@ -210,7 +215,7 @@ const UserList = ({ setMessageId }) => {
           </div>
 
           {btnvisible ? (
-            <div className="xl:flex xl:mr-10 xl:mt-10 xl:justify-end mt-10 ml-5">
+            <div className="xl:flex xl:mr-10 xl:mt-10 xl:justify-end mt-10 flex justify-center">
               <Link className="btn btn-secondary" to={messageURL}>
                 Send message
               </Link>

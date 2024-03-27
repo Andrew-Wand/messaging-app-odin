@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 
@@ -10,6 +10,8 @@ const Message = () => {
   const [messageText, setMessageText] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const currentUser = AuthService.getCurrentUser();
   useEffect(() => {
