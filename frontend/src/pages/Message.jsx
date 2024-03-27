@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 
@@ -60,12 +61,14 @@ const Message = () => {
     <div className="min-h-screen">
       <header>
         {filteredUserList.map((user, i) => (
-          <h1 className="text-center text-3xl mb-5" key={i}>
+          <h1 className="text-center text-3xl mb-5 mt-5" key={i}>
             Message {user.username}
           </h1>
         ))}
       </header>
-
+      <Link to="/" className="btn btn-info text-lg mb-5 ml-[3.4rem]">
+        Back
+      </Link>
       <form onSubmit={handleSendMessage}>
         <div className="flex justify-center">
           <textarea
