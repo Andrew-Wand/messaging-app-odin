@@ -158,7 +158,7 @@ const UserList = ({ setMessageId }) => {
           {/* Chat Area for DESKTOP AND MOBILE / Friends list DESKTOP */}
           <div className="flex justify-center xl:justify-end xl:mr-10">
             <select
-              className="hidden xl:block p-4 xl:w-60 min-h-full bg-base-300 text-base-content p-0 mt-10 xl:rounded-xl xl:shadow-lg"
+              className="hidden xl:block xl:w-60 min-h-full bg-slate-400 text-base-content p-0 mt-10 xl:rounded-xl xl:shadow-lg"
               size={5}
               name=""
               id=""
@@ -168,7 +168,7 @@ const UserList = ({ setMessageId }) => {
                 <option
                   value={user.id}
                   key={i}
-                  className="text-2xl border-solid border-b-[1px] border-slate-500 bg-white text-black h-[5rem] "
+                  className="text-2xl border-solid border-b-[1px] border-slate-500 bg-white text-black h-[5rem]"
                 >
                   <div className="avatar placeholder">
                     <div className="bg-neutral text-neutral-content rounded-full w-16 mr-10 mt-2">
@@ -181,7 +181,7 @@ const UserList = ({ setMessageId }) => {
                 </option>
               ))}
             </select>
-            <div className="w-full h-[26rem] xl:w-[46rem] xl:h-[27rem] xl:mt-10 artboard artboard-horizontal bg-slate-800/10 shadow-lg overflow-auto flex flex-col-reverse">
+            <div className="w-full h-[26rem] xl:w-[46rem] xl:h-[27rem] xl:mt-10 artboard artboard-horizontal bg-slate-200 shadow-lg overflow-auto flex flex-col-reverse">
               {/* Messages in chat room box */}
               <ul>
                 {filteredMessageList.map((message, i) => (

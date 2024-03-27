@@ -17,7 +17,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="navbar bg-base-300 xl:bg-base-300 xl:shadow-lg">
+      <div className="navbar bg-slate-500 xl:shadow-lg">
         <div className="navbar-start">
           {/* MOBILE */}
           <div className="dropdown">
@@ -49,12 +49,12 @@ const Navbar = () => {
                       to={`/profile/${currentUser.id}`}
                       className="nav-link"
                     >
-                      {currentUser.username}
+                      Profile
                     </Link>
                   </li>
                   <li className="nav-item">
                     <a href="/" className="nav-link" onClick={logOut}>
-                      LogOut
+                      Log Out
                     </a>
                   </li>
                 </div>
@@ -89,12 +89,12 @@ const Navbar = () => {
               <>
                 <li className="nav-item">
                   <Link to={`/profile/${currentUser.id}`} className="nav-link">
-                    {currentUser.username}
+                    Profile
                   </Link>
                 </li>
                 <li className="nav-item">
                   <a href="/" className="nav-link" onClick={logOut}>
-                    LogOut
+                    Log Out
                   </a>
                 </li>
               </>
