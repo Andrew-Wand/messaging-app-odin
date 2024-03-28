@@ -60,7 +60,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 // No user logged in
-                <div className="navbar-nav ml-auto">
+                <div className="navbar-nav ">
                   <li className="nav-item">
                     <Link to={"/sign-in"} className="nav-link">
                       Login
@@ -82,7 +82,7 @@ const Navbar = () => {
         </div>
 
         {/* DESKTOP */}
-        <div className="navbar-end hidden lg:flex">
+        <div className="navbar-end hidden xl:flex">
           <ul className="menu menu-horizontal px-1">
             {currentUser ? (
               // User is logged in
@@ -100,7 +100,7 @@ const Navbar = () => {
               </>
             ) : (
               // No user logged in
-              <div className="navbar-nav ml-auto">
+              <>
                 <li className="nav-item">
                   <Link to={"/sign-in"} className="nav-link">
                     Login
@@ -112,7 +112,7 @@ const Navbar = () => {
                     Sign Up
                   </Link>
                 </li>
-              </div>
+              </>
             )}
           </ul>
         </div>
