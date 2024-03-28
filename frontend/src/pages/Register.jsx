@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -109,71 +110,169 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div>
-        <Form onSubmit={handleRegister} ref={form}>
-          <div>
-            <label htmlFor="first_name">First Name</label>
-            <Input
-              type="text"
-              name="first_name"
-              value={firstName}
-              onChange={onChangeFirstName}
-              validations={[required]}
-            />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last Name</label>
-            <Input
-              type="text"
-              name="last_name"
-              value={lastName}
-              onChange={onChangeLastName}
-              validations={[required]}
-            />
-          </div>
-          <div>
-            <label htmlFor="username">Username</label>
-            <Input
-              type="text"
-              name="username"
-              value={username}
-              onChange={onChangeUsername}
-              validations={[required, vusername]}
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <Input
-              type="email"
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-              validations={[required, validEmail]}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <Input
-              type="password"
-              name="password"
-              value={password}
-              onChange={onChangePassword}
-              validations={[required, vpassword]}
-            />
-          </div>
+    <div className="min-h-screen flex justify-center items-center bg-slate-400">
+      <div className="card w-96 bg-base-200 shadow-xl h-[45rem]">
+        <header className="mt-5 ml-5">
+          <h1 className="card-title justify-start text-2xl">Log In</h1>
+        </header>
 
-          <div>
-            <button>
-              <span>Sign up</span>
-            </button>
-          </div>
+        <div className="card-body items-center justify-center text-center">
+          <div className="card-actions">
+            <div>
+              <Form onSubmit={handleRegister} ref={form}>
+                <div>
+                  <label htmlFor="first_name" className="text-xl">
+                    First Name
+                  </label>
+                  <Input
+                    type="text"
+                    name="first_name"
+                    value={firstName}
+                    onChange={onChangeFirstName}
+                    validations={[required]}
+                    className="input input-bordered bg-slate-100 shadow-lg mt-2 h-[2.5rem]"
+                  />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="last_name" className="text-xl">
+                    Last Name
+                  </label>
+                  <Input
+                    type="text"
+                    name="last_name"
+                    value={lastName}
+                    onChange={onChangeLastName}
+                    validations={[required]}
+                    className="input input-bordered bg-slate-100 shadow-lg mt-2 h-[2.5rem]"
+                  />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="username" className="text-xl">
+                    Username
+                  </label>
+                  <Input
+                    type="text"
+                    name="username"
+                    value={username}
+                    onChange={onChangeUsername}
+                    validations={[required, vusername]}
+                    className="input input-bordered bg-slate-100 shadow-lg mt-2 h-[2.5rem]"
+                  />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="email" className="text-xl">
+                    Email
+                  </label>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={onChangeEmail}
+                    validations={[required, validEmail]}
+                    className="input input-bordered bg-slate-100 shadow-lg mt-2 h-[2.5rem]"
+                  />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="password" className="text-xl">
+                    Password
+                  </label>
+                  <Input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={onChangePassword}
+                    validations={[required, vpassword]}
+                    className="input input-bordered bg-slate-100 shadow-lg mt-2 h-[2.5rem]"
+                  />
+                </div>
 
-          {message && <div>{message}</div>}
-          <CheckButton ref={checkBtn} style={{ display: "none" }} />
-        </Form>
+                <div className="mt-6">
+                  <button className="btn btn-wide btn-info">
+                    <span>Sign up</span>
+                  </button>
+                </div>
+                <div className="divider">or</div>
+
+                <div className="mt-5">
+                  <Link to={"/sign-in"} className="btn btn-wide btn-neutral">
+                    Sign In
+                  </Link>
+                </div>
+
+                {message && <div>{message}</div>}
+                <CheckButton ref={checkBtn} style={{ display: "none" }} />
+              </Form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    // <div>
+    //   <div>
+    // <Form onSubmit={handleRegister} ref={form}>
+    //   <div>
+    //     <label htmlFor="first_name">First Name</label>
+    //     <Input
+    //       type="text"
+    //       name="first_name"
+    //       value={firstName}
+    //       onChange={onChangeFirstName}
+    //       validations={[required]}
+    //     />
+    //   </div>
+    //   <div>
+    //     <label htmlFor="last_name">Last Name</label>
+    //     <Input
+    //       type="text"
+    //       name="last_name"
+    //       value={lastName}
+    //       onChange={onChangeLastName}
+    //       validations={[required]}
+    //     />
+    //   </div>
+    //   <div>
+    //     <label htmlFor="username">Username</label>
+    //     <Input
+    //       type="text"
+    //       name="username"
+    //       value={username}
+    //       onChange={onChangeUsername}
+    //       validations={[required, vusername]}
+    //     />
+    //   </div>
+    //   <div>
+    //     <label htmlFor="email">Email</label>
+    //     <Input
+    //       type="email"
+    //       name="email"
+    //       value={email}
+    //       onChange={onChangeEmail}
+    //       validations={[required, validEmail]}
+    //     />
+    //   </div>
+    //   <div>
+    //     <label htmlFor="password">Password</label>
+    //     <Input
+    //       type="password"
+    //       name="password"
+    //       value={password}
+    //       onChange={onChangePassword}
+    //       validations={[required, vpassword]}
+    //     />
+    //   </div>
+
+    //   <div>
+    //     <button>
+    //       <span>Sign up</span>
+    //     </button>
+    //   </div>
+
+    //   {message && <div>{message}</div>}
+    //   <CheckButton ref={checkBtn} style={{ display: "none" }} />
+    // </Form>
+    //   </div>
+    // </div>
   );
 };
 

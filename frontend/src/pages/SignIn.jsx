@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -64,8 +64,8 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-slate-400">
-      <div className="card w-96 bg-base-200 shadow-xl h-[30rem]">
-        <header className="mt-20">
+      <div className="card w-96 bg-base-200 shadow-xl h-[32rem]">
+        <header className="mt-14">
           <h1 className="card-title justify-center text-2xl">Log In</h1>
         </header>
 
@@ -100,10 +100,16 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="mt-5">
+                <div className="mt-10">
                   <button className="btn btn-wide btn-info">
                     <span>Login</span>
                   </button>
+                </div>
+                <div className="divider">or</div>
+                <div className="">
+                  <Link to={"/register"} className="btn btn-wide btn-neutral">
+                    Sign Up
+                  </Link>
                 </div>
 
                 {message && <div>{message}</div>}
