@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
 
@@ -76,7 +77,7 @@ const Profile = () => {
         </header>
         <div className="divider"></div>
         {isEditing ? (
-          <div className="bg-slate-400 p-7 shadow-lg">
+          <div className="bg-slate-400 p-7 shadow-xl">
             <div className="flex-column">
               <h2 className="text-2xl text-center mb-5">Edit Profile</h2>
               <form onSubmit={handleEditSubmit}>
@@ -85,7 +86,7 @@ const Profile = () => {
               </p> */}
                 <div className="mb-5">
                   <label
-                    className="input input-bordered flex items-center gap-2"
+                    className="input input-bordered flex items-center gap-2 shadow-lg"
                     htmlFor=""
                   >
                     <span className="btn bg-slate-400/50 border-none ml-[-1rem]">
@@ -95,14 +96,14 @@ const Profile = () => {
                       type="text"
                       defaultValue={currentUser.email}
                       onChange={onChangeEmailValue}
-                      className="grow"
+                      className="grow "
                     />
                   </label>
                 </div>
 
                 <div className="mb-5">
                   <label
-                    className="input input-bordered flex items-center gap-2"
+                    className="input input-bordered flex items-center gap-2 shadow-lg"
                     htmlFor=""
                   >
                     <span className="btn bg-slate-400/50 border-none ml-[-1rem]">
@@ -119,7 +120,7 @@ const Profile = () => {
 
                 <div className="mb-5">
                   <label
-                    className="input input-bordered flex items-center gap-2"
+                    className="input input-bordered flex items-center gap-2 shadow-lg"
                     htmlFor=""
                   >
                     <span className="btn bg-slate-400/50 border-none ml-[-1rem]">
@@ -136,7 +137,7 @@ const Profile = () => {
 
                 <div>
                   <label
-                    className="input input-bordered flex items-center gap-2"
+                    className="input input-bordered flex items-center gap-2 shadow-lg"
                     htmlFor=""
                   >
                     <span className="btn bg-slate-400/50 border-none ml-[-1rem]">
@@ -168,7 +169,10 @@ const Profile = () => {
           // Profile page display without edit
 
           <div className="bg-slate-400 p-10 shadow-lg">
-            <div className="justify-center flex">
+            <div className="justify-evenly flex">
+              <Link to="/" className="btn btn-info">
+                Back
+              </Link>
               <button
                 className="btn btn-accent shadow-lg mb-10"
                 onClick={() => setIsEditing(true)}

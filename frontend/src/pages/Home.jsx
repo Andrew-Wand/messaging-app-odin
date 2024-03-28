@@ -33,7 +33,7 @@ const Home = ({ setMessageId }) => {
   }, []);
 
   return (
-    <div className="container h-screen ">
+    <div className="container h-screen bg-slate-400">
       {/* <header className="jumbotron">
         <h3>{content}</h3>
       </header> */}
